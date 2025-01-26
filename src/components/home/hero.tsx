@@ -7,7 +7,7 @@ const Hero1 = () => {
   return (
     <section className="py-16">
       <div className="container mx-auto">
-        <div className="grid items-center gap-8 lg:grid-cols-2">
+        <div className="grid items-center gap-8 lg:grid-cols-2  px-4 lg:px-0">
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
             <Badge variant="outline">
               <span className="bg-gradient-to-r from-black dark:from-white to-[#0061ff] dark:to-[#0061ff]  text-transparent bg-clip-text">
@@ -45,7 +45,7 @@ export default Hero1;
 
 export function HeroImage() {
   return (
-    <div className="relative w-full max-h-96 overflow-hidden rounded-md shadow-[inset_4px_4px_10px_rgba(0,0,0,0.5),inset_-4px_-4px_10px_rgba(0,0,0,0.5)]">
+    <div className="relative w-full max-h-60 md:max-h-96 overflow-hidden rounded-md shadow-[inset_4px_4px_10px_rgba(0,0,0,0.5),inset_-4px_-4px_10px_rgba(0,0,0,0.5)]">
       <img
         src="https://media.trekbikes.com/image/upload/w_1920,h_1440,c_pad,f_auto,fl_progressive:semi,q_auto/4x3_RoadBuydersguide_08"
         alt="Cycling Adventure"

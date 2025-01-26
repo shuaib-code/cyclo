@@ -29,7 +29,7 @@ export default function Testimonial() {
     <section className="w-full pt-6 pb-12 md:py-24 lg:py-32 bg-muted">
       <div className="container grid max-w-5xl items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10 mx-auto">
         <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-          <h2 className="scroll-m-20 border-b pb-2 sm:text-4xl md:text-5xl font-semibold tracking-tight transition-colors first:mt-0">
+          <h2 className="scroll-m-20 border-b pb-2 text-4xl md:text-5xl font-semibold tracking-tight transition-colors first:mt-0">
             What Our Customers Say
           </h2>
           <p className="mt-1 text-muted-foreground lg:text-xl">
