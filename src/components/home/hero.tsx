@@ -1,14 +1,29 @@
-import { ArrowDownRight } from "lucide-react";
-
+import { Particles } from "@/components/magicui/particles";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/provider/themeProvider";
+import { ArrowDownRight } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Hero1 = () => {
+  const { theme } = useTheme();
+  const [color, setColor] = useState("#ffffff");
+
+  useEffect(() => {
+    setColor(theme === "dark" ? "#ffffff" : "#000000");
+  }, [theme]);
   return (
     <section className="py-16">
       <div className="container mx-auto">
         <div className="grid items-center gap-8 lg:grid-cols-2  px-4 lg:px-0">
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <div className="relative flex flex-col items-center text-center lg:items-start lg:text-left">
+            <Particles
+              className="absolute inset-0 z-0"
+              quantity={20}
+              ease={80}
+              color={color}
+              refresh
+            />
             <Badge variant="outline">
               <span className="bg-gradient-to-r from-black dark:from-white to-[#0061ff] dark:to-[#0061ff]  text-transparent bg-clip-text">
                 New Arrival
