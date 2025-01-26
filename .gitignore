@@ -23,6 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 
-api/uri.js
-vercel.json
-.vercel
