@@ -4,6 +4,13 @@
     alt="Cyclo Logo" 
     width="200" 
     height="200"
+    style="display: inline-block; margin-right: 0;"
+  >
+  <img 
+    src="https://raw.githubusercontent.com/shuaib-code/cyclo/main/src/assets/cyclo-logo.png" 
+    alt="Cyclo text Logo"
+     width="450"
+    style="display: inline-block;"
   >
 </p>
 
