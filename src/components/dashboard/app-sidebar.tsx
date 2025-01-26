@@ -28,7 +28,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         {(user as ITokenData).role == Role.admin && (
           <NavAdmin items={AdminNavigation} />
         )}
-        {(user as ITokenData).role == Role.admin && (
+        {(user as ITokenData).role == Role.customer && (
           <NavCustomer projects={CustomerNavigation} />
         )}
       </SidebarContent>
