@@ -1,4 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
+import { DotPattern } from "../ui/dot-pattern";
 
 const testimonials = [
   {
@@ -26,8 +28,18 @@ const testimonials = [
 
 export default function Testimonial() {
   return (
-    <section className="w-full pt-6 pb-12 md:py-24 lg:py-32 bg-muted">
-      <div className="container grid max-w-5xl items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10 mx-auto">
+    <section className="relative w-full pt-6 pb-12 md:py-24 lg:py-32 bg-muted">
+      <DotPattern
+        width={20}
+        height={20}
+        cx={1}
+        cy={1}
+        cr={1}
+        className={cn(
+          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] pt-4"
+        )}
+      />
+      <div className="z-10 container grid max-w-5xl items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10 mx-auto">
         <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
           <h2 className="scroll-m-20 border-b pb-2 text-4xl md:text-5xl font-semibold tracking-tight transition-colors first:mt-0">
             What Our Customers Say
@@ -41,7 +53,7 @@ export default function Testimonial() {
           {testimonials.map(({ name, role, feedback, img }, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-start gap-4 rounded-lg bg-background p-6 shadow-sm transition-all hover:shadow-md"
+              className="z-10 flex flex-col items-start gap-4 rounded-lg bg-background p-6 shadow-sm transition-all hover:shadow-md"
             >
               <div className="flex items-center gap-4">
                 <Avatar className="h-12 w-12 border">
