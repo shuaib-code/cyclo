@@ -1,4 +1,13 @@
-# 🚴 Bicycle Store Application
+<p align="center">
+  <img 
+    src="https://raw.githubusercontent.com/shuaib-code/cyclo/main/src/assets/crank1.png" 
+    alt="Cyclo Logo" 
+    width="200" 
+    height="200"
+  >
+</p>
+
+# 🚴Cyclo, Bicycle Store Application
 
 ## 📌 Project Overview
 
