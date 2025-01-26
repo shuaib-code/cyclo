@@ -1,9 +1,12 @@
 import Icon from "@/assets/crank1.png";
 import { Link } from "react-router";
 
-const Logo = () => {
+const Logo = ({ className }: { className?: string }) => {
   return (
-    <Link to={"/"} className="flex justify-center items-center gap-0">
+    <Link
+      to={"/"}
+      className={`flex justify-center items-center gap-0 ${className}`}
+    >
       <img
         src={Icon}
         alt="Cycling Logo"
