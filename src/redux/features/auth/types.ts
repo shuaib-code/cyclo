@@ -21,3 +21,8 @@ export interface ITokenData {
   iat: number;
   exp: number;
 }
+
+export const Role = {
+  admin: "admin",
+  customer: "customer",
+} as const;
