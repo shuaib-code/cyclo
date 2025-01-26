@@ -50,7 +50,7 @@ function NavLinks() {
   const links: { to: string; label: string }[] = [
     { to: "/", label: "Home" },
     { to: "/about", label: "About" },
-    { to: "/task", label: "Task" },
+    { to: "/dashboard", label: "Dashboard" },
     { to: "/login", label: "Login" },
   ];
 

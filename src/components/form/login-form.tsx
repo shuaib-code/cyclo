@@ -52,9 +52,9 @@ export function LoginForm({
         toast.success("Login successful.", { duration: 2000 });
         navigate("/");
       }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (err) {
-      toast.success("Something went worng", { duration: 3000 });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      toast.error(err?.message || "Something went worng", { duration: 3000 });
     }
   };
   useEffect(() => {

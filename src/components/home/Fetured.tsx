@@ -53,7 +53,7 @@ export default function FeturedProduct() {
           : products.map((product, i) => <ProductCard key={i} {...product} />)}
       </div>
       <div className="col-span-1 sm:col-span-2 md:col-span-3 flex justify-center mt-8">
-        <Button variant="outline" className="px-10 py-2">
+        <Button variant="outline" size={"lg"} className="px-10 py-2">
           View more
         </Button>
       </div>
