@@ -63,7 +63,7 @@ function NavLinks() {
           className={` transition-all duration-300
             ${
               location.pathname === to
-                ? "bg-gradient-to-r from-[#0061ff] to-[#60efff] text-transparent bg-clip-text" // Active Link Style
+                ? "text-primary" // Active Link Style
                 : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
             }
           `}

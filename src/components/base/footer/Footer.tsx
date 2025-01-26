@@ -15,7 +15,7 @@ import { Link } from "react-router";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 text-gray-600 pt-12 pb-6 px-4 md:px-6">
+    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300 pt-12 pb-6 px-4 md:px-6">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -27,29 +27,30 @@ export default function Footer() {
                   alt="Cycling Logo"
                   className="h-16 w-16 rounded-lg rotate-180"
                 />
-
                 <span className="font-bold pb-1 text-4xl bg-gradient-to-r from-[#0061ff] to-[#60efff] text-transparent bg-clip-text">
                   Cyclo
                 </span>
               </Link>
             </div>
-            <p className="text-sm text-gray-600 italic mb-4">
+            <p className="text-sm text-gray-600 dark:text-gray-400 italic mb-4">
               Your One-Stop Destination for Quality Bicycles!
             </p>
             <div className="space-y-3">
               <div className="flex items-start space-x-2">
-                <MapPin className="w-5 h-5 text-gray-500 mt-0.5 flex-shrink-0" />
-                <address className="not-italic text-sm text-gray-600">
+                <MapPin className="w-5 h-5 text-gray-500 dark:text-gray-400 mt-0.5 flex-shrink-0" />
+                <address className="not-italic text-sm text-gray-600 dark:text-gray-400">
                   123 Cycle Street, Dhaka, Bangladesh
                 </address>
               </div>
               <div className="flex items-center space-x-2">
-                <Phone className="w-5 h-5 text-gray-500" />
-                <p className="text-sm text-gray-600">+880 1234-567890</p>
+                <Phone className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  +880 1234-567890
+                </p>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="w-5 h-5 text-gray-500" />
-                <p className="text-sm text-gray-600">
+                <Mail className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   support@bicyclestore.com
                 </p>
               </div>
@@ -58,7 +59,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-gray-800">
+            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">
               Quick Links
             </h3>
             <nav>
@@ -73,7 +74,7 @@ export default function Footer() {
                   <li key={item}>
                     <Link
                       to="/"
-                      className="hover:text-gray-800 transition-colors"
+                      className="hover:text-gray-800 dark:hover:text-gray-100 transition-colors"
                     >
                       {item}
                     </Link>
@@ -85,7 +86,7 @@ export default function Footer() {
 
           {/* Social Media */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-gray-800">
+            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">
               Follow Us
             </h3>
             <div className="flex space-x-2">
@@ -98,7 +99,7 @@ export default function Footer() {
               ].map(({ icon: Icon, label }) => (
                 <Button key={label} variant="outline" size="icon" asChild>
                   <Link to="#" aria-label={label}>
-                    <Icon className="h-4 w-4" />
+                    <Icon className="h-4 w-4 text-gray-600 dark:text-gray-300" />
                   </Link>
                 </Button>
               ))}
@@ -107,7 +108,7 @@ export default function Footer() {
 
           {/* Newsletter Signup */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-gray-800">
+            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">
               Newsletter
             </h3>
             <p className="text-sm mb-4">
@@ -117,7 +118,7 @@ export default function Footer() {
               <Input
                 type="email"
                 placeholder="Your email"
-                className="max-w-[200px]"
+                className="max-w-[200px] bg-white dark:bg-gray-800 dark:text-gray-300"
               />
               <Button type="submit">Subscribe</Button>
             </form>
@@ -125,8 +126,8 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-gray-200 text-center">
-          <p className="text-sm">
+        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             © {new Date().getFullYear()} Cyclo: Bicycle Store. All rights
             reserved.
           </p>

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -34,7 +33,6 @@ export function RegisterForm({
   });
 
   const onSubmit = async (values: z.infer<typeof registerSchema>) => {
-    console.log(values);
     try {
       const register = await Register(values).unwrap();
       if (register?.success) {
@@ -43,8 +41,9 @@ export function RegisterForm({
         });
         navigate("/login", { state: { ...values } });
       }
-    } catch (err) {
-      toast.success("Something went worng", { duration: 3000 });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      toast.error(err?.message || "Something went worng", { duration: 3000 });
     }
   };
 

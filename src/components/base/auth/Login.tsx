@@ -31,7 +31,6 @@ export default function Login() {
 export function Logout() {
   const navigate = useNavigate();
   const user = useAppSelector(useCurrentUser);
-  console.log(user);
   const dispatch = useAppDispatch();
   const handleLogout = () => {
     dispatch(logout());

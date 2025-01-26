@@ -42,7 +42,6 @@ export function LoginForm({
   });
 
   const onSubmit = async (values: z.infer<typeof loginSchema>) => {
-    console.log(values);
     try {
       const res = await Register(values).unwrap();
       const user = verifyToken(res.data.token);

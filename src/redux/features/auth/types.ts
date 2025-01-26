@@ -17,6 +17,7 @@ export interface ITokenData {
   id: string;
   role: string;
   name: string;
+  email: string;
   iat: number;
   exp: number;
 }
