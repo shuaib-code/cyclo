@@ -12,6 +12,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import { baseApi } from "./api/baseApi";
 import authReducer from "./features/auth/authSlice";
+import { uploadApi } from "./features/upload/uploadApi";
 
 const persistConfig = {
   key: "auth",
@@ -23,6 +24,7 @@ const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
+    [uploadApi.reducerPath]: uploadApi.reducer,
     auth: persistedAuthReducer,
   },
   middleware: (getDefaultMiddlewares) =>
@@ -30,7 +32,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(baseApi.middleware),
+    }).concat(baseApi.middleware, uploadApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
