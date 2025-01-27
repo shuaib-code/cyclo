@@ -41,7 +41,7 @@ const Hero1 = () => {
               designed for speed, comfort, and adventure. Ride with confidence
               and style!
             </p>
-            <div className="flex w-full max-w-80 flex-col justify-center gap-2 sm:flex-row lg:justify-start">
+            <div className="z-20 flex w-full max-w-80 flex-col justify-center gap-2 sm:flex-row lg:justify-start">
               <Button className="w-full sm:w-auto">Shop Now</Button>
               <Button variant="outline" className="w-full sm:w-auto">
                 Explore Collection

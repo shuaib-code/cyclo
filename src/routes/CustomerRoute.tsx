@@ -7,17 +7,17 @@ import { Heart, Key, Package, User } from "lucide-react";
 export const CustomerNavigation = [
   {
     name: "My Orders",
-    url: "/dashboard/orders",
+    url: "/dashboard/manage-orders",
     icon: Package,
   },
   {
     name: "Profile Settings",
-    url: "/dashboard/profile",
+    url: "/dashboard/user-profile",
     icon: User,
   },
   {
     name: "Change Password",
-    url: "/dashboard/change-password",
+    url: "/dashboard/change-user-password",
     icon: Key,
   },
   {
@@ -28,8 +28,8 @@ export const CustomerNavigation = [
 ];
 
 export const CustomerRoutes = [
-  { path: "orders", element: <Orders /> },
-  { path: "profile", element: <ProfileSettings /> },
-  { path: "change-password", element: <ChangePassword /> },
+  { path: "manage-orders", element: <Orders /> },
+  { path: "user-profile", element: <ProfileSettings /> },
+  { path: "change-user-password", element: <ChangePassword /> },
   { path: "wishlist", element: <Wishlist /> },
 ];

@@ -51,7 +51,6 @@ function NavLinks() {
     { to: "/", label: "Home" },
     { to: "/about", label: "About" },
     { to: "/dashboard", label: "Dashboard" },
-    { to: "/login", label: "Login" },
   ];
 
   return (

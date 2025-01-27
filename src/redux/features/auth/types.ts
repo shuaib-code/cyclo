@@ -26,3 +26,5 @@ export const Role = {
   admin: "admin",
   customer: "customer",
 } as const;
+
+export type TRole = "admin" | "customer";

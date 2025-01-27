@@ -23,13 +23,13 @@ import {
 
 export const AdminRoutes = [
   { path: "users", element: <ManageUser /> },
-  { path: "bicycles", element: <ManageProduct /> },
-  { path: "bicycles/new", element: <AddProduct /> },
-  { path: "bicycles/edit/:id", element: <EditProduct /> },
+  { path: "products", element: <ManageProduct /> },
+  { path: "products/new", element: <AddProduct /> },
+  { path: "products/edit/:id", element: <EditProduct /> },
   { path: "orders", element: <ManageOrder /> },
   { path: "orders/:id", element: <OrderDetails /> },
   { path: "sales", element: <Analytics /> },
-  { path: "profile", element: <ProfileSettings /> },
+  { path: "admin-profile", element: <ProfileSettings /> },
 ];
 
 export const AdminNavigation = [
@@ -52,17 +52,17 @@ export const AdminNavigation = [
     items: [
       {
         title: "Manage Bicycles",
-        url: "/dashboard/bicycles",
+        url: "/dashboard/products",
         icon: ListOrdered,
       },
       {
         title: "Add New Bicycle",
-        url: "/dashboard/bicycles/new",
+        url: "/dashboard/products/new",
         icon: PlusCircle,
       },
       {
         title: "Edit Bicycle",
-        url: "/dashboard/bicycles/edit/:id",
+        url: "/dashboard/products/edit/:id",
         icon: Pencil,
       },
     ],
@@ -96,7 +96,7 @@ export const AdminNavigation = [
       },
       {
         title: "Settings",
-        url: "/dashboard/profile",
+        url: "/dashboard/admin-profile",
         icon: Settings,
       },
     ],

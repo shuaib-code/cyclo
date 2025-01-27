@@ -5,10 +5,12 @@ import Login from "@/pages/Login";
 import NotFound from "@/pages/NotFound";
 import Register from "@/pages/Register";
 import { ThemeProvider } from "@/provider/themeProvider";
+import { Role } from "@/redux/features/auth/types";
 import { Route, Routes } from "react-router";
 import { Toaster } from "sonner";
 import { AdminRoutes } from "./AdminRoute";
 import { CustomerRoutes } from "./CustomerRoute";
+import { ProtectedRoute, ProtectRouteByRole } from "./ProtectedRoute";
 
 function AppRoutes() {
   return (
@@ -16,12 +18,35 @@ function AppRoutes() {
       <Routes>
         <Route path="/" element={<HomeLayout />} />
 
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        >
           {AdminRoutes.map((route, index) => (
-            <Route key={index} path={route.path} element={route.element} />
+            <Route
+              key={index}
+              path={route.path}
+              element={
+                <ProtectRouteByRole role={Role.admin}>
+                  {route.element}
+                </ProtectRouteByRole>
+              }
+            />
           ))}
           {CustomerRoutes.map((route, index) => (
-            <Route key={index} path={route.path} element={route.element} />
+            <Route
+              key={index}
+              path={route.path}
+              element={
+                <ProtectRouteByRole role={Role.customer}>
+                  {route.element}
+                </ProtectRouteByRole>
+              }
+            />
           ))}
         </Route>
         <Route path="/about" element={<About />} />
