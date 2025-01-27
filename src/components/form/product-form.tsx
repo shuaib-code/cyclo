@@ -121,7 +121,7 @@ export default function ProductForm({
     <Form {...form}>
       <form
         className={
-          "space-y-4 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-10" +
+          "space-y-4 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-10 mb-4" +
           className
         }
         {...props}
