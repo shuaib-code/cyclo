@@ -1,3 +1,4 @@
+import AuthBanner from "@/components/base/auth/auth-banner";
 import Logo from "@/components/base/navbar/Logo";
 import { RegisterForm } from "@/components/form/register-form";
 
@@ -14,13 +15,7 @@ export default function Register() {
           </div>
         </div>
       </div>
-      <div className="relative hidden bg-muted lg:block">
-        <img
-          src="/src/assets/register.png"
-          alt="Image"
-          className="absolute inset-0 h-full w-full object-cover brightness-[0.8] grayscale"
-        />
-      </div>
+      <AuthBanner />
     </div>
   );
 }
