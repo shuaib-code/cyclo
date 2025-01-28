@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import { NavLink, useLocation, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { z } from "zod";
+import LoaderText from "../base/loading-btn";
 import {
   Form,
   FormControl,
@@ -104,8 +105,8 @@ export function LoginForm({
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full">
-            {isLoading ? "Login..." : "Login"}
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            <LoaderText isLoading={isLoading} text="Login" />
           </Button>
           <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
             <span className="relative z-10 bg-background px-2 text-muted-foreground">

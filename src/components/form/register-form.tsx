@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { z } from "zod";
+import LoaderText from "../base/loading-btn";
 
 const registerSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -102,10 +103,11 @@ export function RegisterForm({
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full">
-            {isLoading ? "Registering..." : "Register"}
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            <LoaderText isLoading={isLoading} text="Register" />
           </Button>
         </div>
+
         <div className="text-center text-sm">
           Already have an account? {"  "}
           <NavLink to="/login" className="underline underline-offset-4">
