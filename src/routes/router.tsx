@@ -1,47 +1,11 @@
-import { WelcomeDashboard } from "@/components/card/welcome-dashboard";
 import HomeLayout from "@/layouts/HomeLayout";
 import About from "@/pages/About";
-import Dashboard from "@/pages/Dashboard";
 import Login from "@/pages/Login";
 import NotFound from "@/pages/NotFound";
 import Register from "@/pages/Register";
-import { ThemeProvider } from "@/provider/themeProvider";
-import { useCurrentUser } from "@/redux/features/auth/authSlice";
-import { ITokenData } from "@/redux/features/auth/types";
-import { useAppSelector } from "@/redux/hook";
+import ProviderWarpper from "@/provider/ProviderWarpper";
 import { Route, Routes } from "react-router";
-import { Toaster } from "sonner";
-import { AdminRoutes } from "./AdminRoute";
-import { CustomerRoutes } from "./CustomerRoute";
-import { ProtectedRoute, ProtectRouteByRole } from "./ProtectedRoute";
-
-function RenderProtectedRoute() {
-  const user = useAppSelector(useCurrentUser) as ITokenData | null;
-  return (
-    <Route
-      path="/dashboard"
-      element={
-        <ProtectedRoute>
-          <Dashboard />
-        </ProtectedRoute>
-      }
-    >
-      <Route index element={<WelcomeDashboard />} />
-      {user &&
-        [...AdminRoutes, ...CustomerRoutes].map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            element={
-              <ProtectRouteByRole role={user.role}>
-                {route.element}
-              </ProtectRouteByRole>
-            }
-          />
-        ))}
-    </Route>
-  );
-}
+import RenderProtectedRoute from "./RenderProtectedRoute";
 
 export default function AppRoutes() {
   return (
@@ -55,14 +19,5 @@ export default function AppRoutes() {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </ProviderWarpper>
-  );
-}
-
-function ProviderWarpper({ children }: { children: React.ReactNode }) {
-  return (
-    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-      {children}
-      <Toaster richColors expand={false} position="top-right" />
-    </ThemeProvider>
   );
 }
