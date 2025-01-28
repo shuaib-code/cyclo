@@ -4,7 +4,7 @@ import {
   useCurrentUser,
   useIsTokenExpired,
 } from "@/redux/features/auth/authSlice";
-import { ITokenData, TRole } from "@/redux/features/auth/types";
+import { ITokenData } from "@/redux/features/auth/types";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { useEffect } from "react";
 import { Navigate, useLocation } from "react-router";
@@ -38,7 +38,7 @@ export const ProtectRouteByRole = ({
   role,
 }: {
   children: React.ReactNode;
-  role: TRole;
+  role: string;
 }) => {
   const { pathname } = useLocation();
   const route = pathname.split("/")[1]?.replace(/^./, (c) => c.toUpperCase());

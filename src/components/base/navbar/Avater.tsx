@@ -26,4 +26,25 @@ const UserAvater = ({ userName }: { userName: string }) => {
   );
 };
 
+export const UserAvaterLG = ({ userName }: { userName: string }) => {
+  // Get the first character of the user's name
+  const firstChar = userName.charAt(0).toUpperCase();
+
+  // Generate random gradient background
+  const randomGradient = generateRandomGradient();
+
+  return (
+    <div
+      className="w-12 h-12 rounded-full text-2xl font-bold"
+      style={{
+        background: randomGradient,
+      }}
+    >
+      <span className="flex items-center justify-center w-full h-full text-white">
+        {firstChar}
+      </span>
+    </div>
+  );
+};
+
 export default UserAvater;
