@@ -1,16 +1,30 @@
 import {
+  logout,
   useCurrentToken,
   useCurrentUser,
+  useIsTokenExpired,
 } from "@/redux/features/auth/authSlice";
 import { ITokenData, TRole } from "@/redux/features/auth/types";
-import { useAppSelector } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { useEffect } from "react";
 import { Navigate, useLocation } from "react-router";
 import { toast } from "sonner";
 
 export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const isExpired = useAppSelector(useIsTokenExpired);
+  const dispatch = useAppDispatch();
   const { pathname } = useLocation();
   const route = pathname.split("/")[1]?.replace(/^./, (c) => c.toUpperCase());
   const token = useAppSelector(useCurrentToken);
+
+  useEffect(() => {
+    if (isExpired) {
+      console.log("effect", token);
+      dispatch(logout());
+      toast.warning("Session expired. Please log in again.");
+    }
+  }, [isExpired, dispatch]);
+
   if (!token) {
     setTimeout(() => {
       toast.warning(`Please, login to continue to ${route}`);

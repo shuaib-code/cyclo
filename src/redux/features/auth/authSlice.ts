@@ -1,6 +1,7 @@
+import { verifyToken } from "@/utils/varifyToken";
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
-import { TAuthState } from "./types";
+import { ITokenData, TAuthState } from "./types";
 
 const initialState: TAuthState = {
   user: null,
@@ -13,6 +14,9 @@ const authSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       const { user, token } = action.payload;
+      if (!verifyToken(token)) {
+        return; // Don't set if expired
+      }
       state.user = user;
       state.token = token;
     },
@@ -22,6 +26,12 @@ const authSlice = createSlice({
     },
   },
 });
+
+export const useIsTokenExpired = (state: RootState): boolean => {
+  const user = state.auth.user as ITokenData | null;
+  if (!user || !user.exp) return true;
+  return Date.now() / 1000 > user.exp; // Compare current time with expiry
+};
 
 export const { setUser, logout } = authSlice.actions;
 
