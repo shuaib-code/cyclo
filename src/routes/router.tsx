@@ -1,5 +1,6 @@
 import App from "@/App";
 import About from "@/pages/About";
+import AllProducts from "@/pages/AllProducts";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import NotFound from "@/pages/NotFound";
@@ -22,6 +23,7 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/about" element={<About />} />
+          <Route path="/products" element={<AllProducts />} />
           <Route index element={<Home />} />
         </Route>
         {RenderProtectedRoute()}

@@ -44,7 +44,7 @@ export const ThemeToggle = () => {
   };
 
   return (
-    <div className="theme-toggle-wrapper rounded-full drop-shadow-sm">
+    <div className="theme-toggle-wrapper rounded-full drop-shadow">
       <label className="switch">
         <input
           type="checkbox"

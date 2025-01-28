@@ -1,6 +1,7 @@
 import { ThemeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { navLinks } from "@/routes/NavLinks";
 import { Link, useLocation } from "react-router";
 import Login from "../auth/Login";
 import { MenuIcon } from "./icon";
@@ -48,11 +49,7 @@ export default function NavBar() {
 function NavLinks() {
   const location = useLocation();
 
-  const links: { to: string; label: string }[] = [
-    { to: "/", label: "Home" },
-    { to: "/about", label: "About" },
-    { to: "/dashboard", label: "Dashboard" },
-  ];
+  const links: { to: string; label: string }[] = [...navLinks];
 
   return (
     <>

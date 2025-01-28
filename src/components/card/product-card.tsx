@@ -1,41 +1,42 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { TProduct } from "@/redux/features/product/types";
 import { Star } from "lucide-react";
 
-interface ProductCardProps {
-  image: string;
-  title: string;
-  rating: number;
-  description: string;
-  price: number;
-  inStock?: boolean;
-}
+export function ProductCard({ product }: { product: TProduct }) {
+  const {
+    _id,
+    brand,
+    category,
+    createdAt,
+    description,
+    images,
+    model,
+    name,
+    price,
+    rating,
+    stock,
+    updatedAt,
+  } = product;
 
-export function ProductCard({
-  image,
-  title,
-  rating,
-  description,
-  price,
-  inStock = true,
-}: ProductCardProps) {
   return (
-    <Card className="h-full transition ease-in-out duration-300 hover:drop-shadow-md">
+    <Card className="flex flex-col h-full w-full transition ease-in-out duration-300 hover:drop-shadow-md">
       <div className="w-full max-h-72 rounded-lg overflow-hidden">
         <img
-          src={image || "/placeholder.svg"}
-          alt={title}
+          src={images[0] || "/placeholder.svg"}
+          alt={name}
           className="object-contain transition ease-in-out duration-300 hover:scale-110 hover:rotate-3"
         />
       </div>
-      <CardContent className="p-4 space-y-4">
-        <h3 className="text-2xl font-semibold">{title}</h3>
+      <CardContent className="flex-grow p-4 space-y-4">
+        <h3 className="text-2xl font-semibold">{name}</h3>
         <Ratings rating={rating} />
         <p className="text-muted-foreground">{description}</p>
         <div className="flex items-center justify-between">
           <span className="text-3xl font-bold">${price.toFixed(2)}</span>
-          {inStock ? (
+          {stock ? (
             <Badge
               variant="secondary"
               className="font-semibold bg-green-500 hover:bg-green-500/70 text-white"
