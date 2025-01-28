@@ -1,11 +1,20 @@
-import { Bike, CheckCircle, PenTool, ShoppingBag, Users } from "lucide-react";
-import type React from "react";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import {
+  Bike,
+  CheckCircle,
+  Mountain,
+  PenTool,
+  ShoppingBag,
+  Users,
+} from "lucide-react";
+
 import { useEffect, useState } from "react";
 
 const AboutPicture: string =
   "https://images.unsplash.com/photo-1486413161838-08358ba654df?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
-const About: React.FC = () => {
+export default function About() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -87,9 +96,9 @@ const About: React.FC = () => {
   ];
 
   return (
-    <div className="bg-gray-100 text-gray-900 scroll-smooth">
-      <section className="">
-        {/* Hero Section */}
+    <div className="bg-background text-foreground scroll-smooth">
+      {/* Hero Section */}
+      <section>
         <div className="py-36 relative flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
@@ -97,7 +106,7 @@ const About: React.FC = () => {
               alt="Cyclists riding through a scenic route"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black opacity-50"></div>
+            <div className="absolute inset-0 bg-black/50"></div>
           </div>
           <div className="relative z-10 text-center text-white">
             <h1 className="text-2xl md:text-6xl font-bold mb-4 animate-fade-in-down">
@@ -111,57 +120,63 @@ const About: React.FC = () => {
             </p>
           </div>
         </div>
-        {/* Mission Section */}
-        <div className="py-20 bg-gradient-to-r from-[#0061ff] to-[#60efff] text-gray-800">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">
-              Our Mission
-            </h2>
-            <p className="text-base text-center max-w-3xl mx-auto text-gray-800">
-              Our mission is simple: to provide top-tier bicycles and
-              accessories that enhance your riding experience. Whether you're an
-              urban commuter, a weekend adventurer, or a competitive racer, we
-              aim to support your journey with the best products and services.
-            </p>
-          </div>
+      </section>
+
+      <section className="relative py-24 bg-gradient-to-r from-[#0061ff] to-[#60efff] overflow-hidden">
+        {/* Background Icon */}
+        <Mountain className="absolute top-10 left-10 w-32 h-32 text-white opacity-10 dark:opacity-15" />
+        <Mountain className="absolute bottom-10 right-10 w-32 h-32 text-white opacity-10 dark:opacity-15" />
+
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-4xl font-bold text-white tracking-tight mb-6">
+            Our Mission
+          </h2>
+          <p className="text-lg max-w-2xl mx-auto text-white/90 leading-relaxed">
+            We strive to provide top-tier bicycles and accessories that enhance
+            your riding experience. Whether you're an urban commuter, a weekend
+            adventurer, or a competitive racer, we support your journey with the
+            best products and services.
+          </p>
         </div>
       </section>
+
       {/* Products & Services Section */}
-      <section
-        className="py-20 bg-gray-200  bg-gradient-to-b from-gray-200
-      via-gray-200/90 to-white"
-      >
+      <section className="py-20 bg-gray-200 dark:bg-gray-800">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">
             Our Products & Services
           </h2>
           <div className="flex justify-center items-center">
             <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-16">
               {offerings.map((offering, index) => (
-                <div
+                <Card
                   key={index}
-                  className={` text-center transition-all duration-500 max-w-80 ${
+                  className={`text-center transition-all duration-500 max-w-80 ${
                     isVisible
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-10"
                   }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <offering.icon className="w-16 h-16 mx-auto mb-4 text-primary" />
-                  <h3 className="font-semibold text-xl mb-2">
-                    {offering.title}
-                  </h3>
-                  <p>{offering.description}</p>
-                </div>
+                  <CardHeader>
+                    <offering.icon className="w-16 h-16 mx-auto mb-4 text-primary" />
+                    <h3 className="font-semibold text-xl mb-2">
+                      {offering.title}
+                    </h3>
+                  </CardHeader>
+                  <CardContent>
+                    <p>{offering.description}</p>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
         </div>
       </section>
-      {/* Why Choose Us Section */}
-      <section className="py-20 bg-white">
+
+      <section className="py-20 bg-background transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">
+          <h2 className="text-3xl font-bold mb-12 text-center text-foreground">
             Why Choose Cyclo?
           </h2>
           <div className="flex justify-center items-center">
@@ -169,19 +184,22 @@ const About: React.FC = () => {
               {reasons.map((reason, index) => (
                 <div
                   key={index}
-                  className={`flex max-w-80 items-start space-x-4 transition-all duration-500 ${
+                  className={cn(
+                    "flex max-w-80 items-start space-x-4 transition-all duration-500",
                     isVisible
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-10"
-                  }`}
+                  )}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-xl mb-2">
+                    <h3 className="font-semibold text-xl mb-2 text-foreground">
                       {reason.title}
                     </h3>
-                    <p>{reason.description}</p>
+                    <p className="text-muted-foreground">
+                      {reason.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -189,20 +207,18 @@ const About: React.FC = () => {
           </div>
         </div>
       </section>
+
       {/* Team Section */}
-      <section
-        className="py-20 bg-gradient-to-t from-gray-200
-      via-gray-200/90 to-white"
-      >
+      <section className="py-20 bg-gray-200 dark:bg-gray-800">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">
+          <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">
             Meet Our Team
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
-              <div
+              <Card
                 key={index}
-                className={`bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-500 ${
+                className={`bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg transition-all duration-500 ${
                   isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
@@ -216,21 +232,26 @@ const About: React.FC = () => {
                     className="w-full h-64 object-cover transition duration-300 ease-linear hover:scale-105 grayscale"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-semibold text-xl mb-1">{member.name}</h3>
-                  <p className="text-gray-600">{member.role}</p>
-                </div>
-              </div>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-xl mb-1 text-gray-900 dark:text-white">
+                    {member.name}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {member.role}
+                  </p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
+
       {/* Vision Section */}
       <section
         className="py-20 text-white bg-cover bg-center bg-no-repeat relative bg-fixed"
         style={{
           backgroundImage:
-            "url('https://plus.unsplash.com/premium_photo-1670002508281-fa935a5318eb?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", // Replace with your image
+            "url('https://plus.unsplash.com/premium_photo-1670002508281-fa935a5318eb?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
         }}
       >
         {/* Overlay for better text visibility */}
@@ -238,21 +259,23 @@ const About: React.FC = () => {
 
         {/* Glassmorphism Card */}
         <div className="relative container mx-auto px-6">
-          <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-10 max-w-3xl mx-auto shadow-lg">
-            <h2 className="text-4xl font-bold mb-6 text-center text-white drop-shadow-lg">
-              Our Vision for the Future
-            </h2>
-            <p className="text-lg text-center text-white/80">
-              We envision a world where cycling is not just a mode of transport
-              but a lifestyle embraced by all. Through innovation and customer
-              engagement, we strive to make Cyclo the go-to destination for
-              every cycling enthusiast.
-            </p>
-          </div>
+          <Card className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-10 max-w-3xl mx-auto shadow-lg">
+            <CardHeader>
+              <h2 className="text-4xl font-bold mb-6 text-center text-white drop-shadow-lg">
+                Our Vision for the Future
+              </h2>
+            </CardHeader>
+            <CardContent>
+              <p className="text-lg text-center text-white/80">
+                We envision a world where cycling is not just a mode of
+                transport but a lifestyle embraced by all. Through innovation
+                and customer engagement, we strive to make Cyclo the go-to
+                destination for every cycling enthusiast.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
     </div>
   );
-};
-
-export default About;
+}
