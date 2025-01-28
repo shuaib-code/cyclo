@@ -1,5 +1,3 @@
-import { Moon, Sun } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,6 +6,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "@/provider/themeProvider";
+import { Moon, Sun } from "lucide-react";
+import "./theme.css";
 
 export function ModeToggle() {
   const { setTheme } = useTheme();
@@ -35,3 +35,24 @@ export function ModeToggle() {
     </DropdownMenu>
   );
 }
+
+export const ThemeToggle = () => {
+  const { theme, setTheme } = useTheme();
+
+  const handleToggle = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  return (
+    <div className="theme-toggle-wrapper rounded-full drop-shadow">
+      <label className="switch">
+        <input
+          type="checkbox"
+          checked={theme === "dark"}
+          onChange={handleToggle}
+        />
+        <span className="slider" />
+      </label>
+    </div>
+  );
+};

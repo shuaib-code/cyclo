@@ -96,6 +96,13 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 /* @layer base {
   :root {
     --background: 0 0% 100%;

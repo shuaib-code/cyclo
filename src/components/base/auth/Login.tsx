@@ -39,8 +39,8 @@ export function Logout() {
   };
   return (
     <div className="inline-flex items-center space-x-2">
-      <Button onClick={handleLogout}>Logout</Button>
       <UserAvater userName={(user as ITokenData)?.name} />
+      <Button onClick={handleLogout}>Logout</Button>
     </div>
   );
 }

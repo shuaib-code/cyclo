@@ -1,3 +1,4 @@
+import PageAnimation from "@/components/animation/page-animation";
 import HomeLayout from "@/layouts/HomeLayout";
 import About from "@/pages/About";
 import Login from "@/pages/Login";
@@ -13,7 +14,14 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/" element={<HomeLayout />} />
         {RenderProtectedRoute()}
-        <Route path="/about" element={<About />} />
+        <Route
+          path="/about"
+          element={
+            <PageAnimation>
+              <About />
+            </PageAnimation>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />

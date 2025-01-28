@@ -1,4 +1,4 @@
-import { ModeToggle } from "@/components/mode-toggle";
+import { ThemeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useLocation } from "react-router";
@@ -16,7 +16,8 @@ export default function NavBar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <ModeToggle />
+          <ThemeToggle />
+
           <div className="hidden items-center gap-2 text-sm font-medium md:flex">
             <Login />
           </div>
