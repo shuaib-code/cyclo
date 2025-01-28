@@ -19,7 +19,6 @@ export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (isExpired) {
-      console.log("effect", token);
       dispatch(logout());
       toast.warning("Session expired. Please log in again.");
     }

@@ -1,18 +1,4 @@
-import NavBar from "@/components/base/navbar/Navbar";
-import {
-  Bike,
-  CheckCircle,
-  Facebook,
-  Globe,
-  Instagram,
-  Mail,
-  MapPin,
-  PenTool,
-  Phone,
-  ShoppingBag,
-  Twitter,
-  Users,
-} from "lucide-react";
+import { Bike, CheckCircle, PenTool, ShoppingBag, Users } from "lucide-react";
 import type React from "react";
 import { useEffect, useState } from "react";
 
@@ -100,22 +86,8 @@ const About: React.FC = () => {
     },
   ];
 
-  const contactInfo = [
-    { icon: MapPin, text: "Visit Us: [Your Store Location]" },
-    { icon: Mail, text: "Email: support@cyclo.com" },
-    { icon: Phone, text: "Call Us: +123-456-7890" },
-    { icon: Globe, text: "Website: www.cyclo.com" },
-  ];
-
-  const socialMedia = [
-    { icon: Facebook, link: "#" },
-    { icon: Instagram, link: "#" },
-    { icon: Twitter, link: "#" },
-  ];
-
   return (
     <div className="bg-gray-100 text-gray-900 scroll-smooth">
-      <NavBar />
       <section className="">
         {/* Hero Section */}
         <div className="py-36 relative flex items-center justify-center overflow-hidden">
@@ -276,41 +248,6 @@ const About: React.FC = () => {
               engagement, we strive to make Cyclo the go-to destination for
               every cycling enthusiast.
             </p>
-          </div>
-        </div>
-      </section>
-      {/* Contact Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">Get in Touch</h2>
-          <div className="max-w-2xl mx-auto">
-            <p className="text-center mb-8 text-base">
-              We love hearing from fellow cyclists! Whether you have a question,
-              need assistance, or want to share your cycling experience, feel
-              free to reach out.
-            </p>
-            <div className="grid gap-6 mb-8">
-              {contactInfo.map((item, index) => (
-                <div key={index} className="flex items-center space-x-4">
-                  <item.icon className="w-6 h-6 text-primary" />
-                  <span className="text-sm">{item.text}</span>
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-center space-x-6">
-              {socialMedia.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:text-primary-dark transition-colors"
-                >
-                  <item.icon className="w-8 h-8" />
-                  <span className="sr-only">{item.icon.name}</span>
-                </a>
-              ))}
-            </div>
           </div>
         </div>
       </section>
