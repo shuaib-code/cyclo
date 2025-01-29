@@ -2,6 +2,14 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -21,7 +29,7 @@ import { ProductCard } from "./product-card";
 export default function ProductList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(6);
   const [sortBy, setSortBy] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const [total, setTotal] = useState(0);
@@ -47,7 +55,7 @@ export default function ProductList() {
       sortBy,
       sortOrder,
     });
-  }, [getProducts, limit, sortBy, sortOrder]); // Only trigger once on component mount
+  }, [getProducts, page, limit, sortBy, sortOrder]); // Only trigger once on component mount
 
   if (isLoading || isFetching) return <ProductListSkeleton />;
   if (error)
@@ -64,6 +72,12 @@ export default function ProductList() {
       sortBy,
       sortOrder,
     });
+  };
+
+  const handlePageChange = (newPage: number) => {
+    if (newPage >= 1 && newPage <= total) {
+      setPage(newPage);
+    }
   };
 
   return (
@@ -144,15 +158,59 @@ export default function ProductList() {
       </div>
 
       <div className="mt-4 flex justify-between items-center">
-        <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
+        {/* <Button onClick={() => setPage(page - 1)} disabled={page === 1}>
           Previous
         </Button>
         <span>
           Page {page} of {total}
         </span>
-        <Button onClick={() => setPage(page + 1)} disabled={page === total}>
+        <Button onClick={() => setPage(page + 1)} disabled={page >= total}>
           Next
-        </Button>
+        </Button> */}
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                href={page === 1 ? "#" : undefined}
+                onClick={(e) => {
+                  if (page > 1) {
+                    handlePageChange(page - 1);
+                  } else {
+                    e.preventDefault();
+                  }
+                }}
+                className={page === 1 ? "cursor-not-allowed opacity-50" : ""}
+              />
+            </PaginationItem>
+
+            {/* Displaying page numbers */}
+            {[...Array(total)].map((_, index) => (
+              <PaginationItem key={index}>
+                <PaginationLink
+                  href="#"
+                  onClick={() => handlePageChange(index + 1)}
+                  isActive={page === index + 1}
+                >
+                  {index + 1}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+
+            <PaginationItem>
+              <PaginationNext
+                href={page >= total ? "#" : undefined}
+                onClick={(e) => {
+                  if (page < total) {
+                    handlePageChange(page + 1);
+                  } else {
+                    e.preventDefault();
+                  }
+                }}
+                className={page >= total ? "cursor-not-allowed opacity-50" : ""}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import { useGetSingleProductQuery } from "@/redux/features/product/productApi";
 import { TProduct } from "@/redux/features/product/types";
 import { format } from "date-fns";
 import { AlertCircle, Check, ShoppingCart, Star } from "lucide-react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "sonner";
 
@@ -21,6 +22,7 @@ const features = [
 ];
 
 export default function ProductDetails() {
+  const [showImage, setShowImage] = useState("");
   const navigate = useNavigate();
   const { id: productId } = useParams();
   const { data, isLoading, error } = useGetSingleProductQuery(productId);
@@ -66,9 +68,9 @@ export default function ProductDetails() {
           <div className="grid lg:grid-cols-2 gap-8 p-6 lg:p-8">
             {/* Image Section */}
             <div className="space-y-6">
-              <div className="relative aspect-square overflow-hidden rounded-lg">
+              <div className="relative overflow-hidden rounded-lg">
                 <img
-                  src={images[0] || placeholder}
+                  src={showImage || images[0] || placeholder}
                   alt={name}
                   className="transition-transform duration-300 hover:scale-105 object-cover"
                   onError={(e) => {
@@ -76,19 +78,10 @@ export default function ProductDetails() {
                     target.src = placeholder;
                   }}
                 />
-                <Badge
-                  variant="outline"
-                  className="absolute top-1 left-1 text-xs px-3 py-1"
-                >
-                  {category}
-                </Badge>
               </div>
               <div className="grid grid-cols-4 gap-2">
                 {[...Array(4)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="relative aspect-square overflow-hidden rounded-md"
-                  >
+                  <div key={i} className="relative overflow-hidden rounded-md">
                     <img
                       src={images[i] || placeholder}
                       alt={`${name} thumbnail ${i + 1}`}
@@ -110,9 +103,7 @@ export default function ProductDetails() {
                   <h1 className="text-3xl font-bold text-foreground mb-2">
                     {name}
                   </h1>
-                  <p className="text-xl text-muted-foreground mb-2">
-                    {brand} {model}
-                  </p>
+                  <p className="text-xl text-muted-foreground mb-2">{model}</p>
                 </div>
               </div>
               {/* Rating */}
@@ -155,7 +146,7 @@ export default function ProductDetails() {
                 <TabsList className="grid w-full grid-cols-3">
                   <TabsTrigger value="description">Description</TabsTrigger>
                   <TabsTrigger value="features">Features</TabsTrigger>
-                  <TabsTrigger value="details">Technical Details</TabsTrigger>
+                  <TabsTrigger value="details">Details</TabsTrigger>
                 </TabsList>
                 <TabsContent value="description" className="mt-6">
                   <h2 className="text-xl font-semibold text-foreground mb-4">
@@ -178,8 +169,8 @@ export default function ProductDetails() {
                   </ul>
                 </TabsContent>
                 <TabsContent value="details" className="mt-6">
-                  <h2 className="text-2xl font-bold text-foreground mb-4">
-                    Technical Details
+                  <h2 className="text-xl text-left font-bold text-foreground mb-4">
+                    Details
                   </h2>
                   <table className="w-full text-left">
                     <tbody className="divide-y divide-border">

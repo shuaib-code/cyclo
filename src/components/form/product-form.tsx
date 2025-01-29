@@ -165,7 +165,7 @@ export default function ProductForm({
                         <SelectValue placeholder="Select a brand" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="trek">Trek</SelectItem>
+                        <SelectItem value="Trek">Trek</SelectItem>
                         <SelectItem value="giant">Giant</SelectItem>
                         <SelectItem value="specialized">Specialized</SelectItem>
                         <SelectItem value="cannondale">Cannondale</SelectItem>

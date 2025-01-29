@@ -13,7 +13,7 @@ export function ProductCard({ product }: { product: TProduct }) {
 
   return (
     <Card className="flex flex-col h-full w-full transition ease-in-out duration-300 hover:drop-shadow-md">
-      <div className="w-full max-h-72 rounded-lg overflow-hidden">
+      <div className="w-full max-h-[300px] rounded-lg overflow-hidden">
         <img
           src={images[0] || placeholder}
           alt={name}
@@ -24,10 +24,14 @@ export function ProductCard({ product }: { product: TProduct }) {
           }}
         />
       </div>
-      <CardContent className="flex-grow p-4 space-y-4">
-        <h3 className="text-2xl font-semibold">{name}</h3>
-        <Ratings rating={rating} />
-        <p className="text-muted-foreground">{description}</p>
+      <CardContent className="flex-grow flex flex-col justify-between p-4 space-y-4">
+        <div className="space-y-4">
+          <h3 className="text-2xl font-semibold">{name}</h3>
+          <Ratings rating={rating} />
+          <p className="text-muted-foreground">
+            {description.slice(0, 190)}...
+          </p>
+        </div>
         <div className="flex items-center justify-between">
           <span className="text-3xl font-bold">${price.toFixed(2)}</span>
           {stock ? (
