@@ -9,7 +9,6 @@ import { useGetSingleProductQuery } from "@/redux/features/product/productApi";
 import { TProduct } from "@/redux/features/product/types";
 import { format } from "date-fns";
 import { AlertCircle, Check, ShoppingCart, Star } from "lucide-react";
-import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "sonner";
 
@@ -22,7 +21,7 @@ const features = [
 ];
 
 export default function ProductDetails() {
-  const [showImage, setShowImage] = useState("");
+  // const [showImage, setShowImage] = useState("");
   const navigate = useNavigate();
   const { id: productId } = useParams();
   const { data, isLoading, error } = useGetSingleProductQuery(productId);
@@ -70,7 +69,7 @@ export default function ProductDetails() {
             <div className="space-y-6">
               <div className="relative overflow-hidden rounded-lg">
                 <img
-                  src={showImage || images[0] || placeholder}
+                  src={images[0] || placeholder}
                   alt={name}
                   className="transition-transform duration-300 hover:scale-105 object-cover"
                   onError={(e) => {
