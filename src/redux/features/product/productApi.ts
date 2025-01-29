@@ -20,6 +20,9 @@ const productApi = baseApi.injectEndpoints({
         return `product${queryString}`;
       },
     }),
+    getSingleProduct: builder.query({
+      query: (id: string | undefined) => `product/${id}`,
+    }),
     createProduct: builder.mutation({
       query: (productDetails) => {
         return {
@@ -35,4 +38,5 @@ export const {
   useCreateProductMutation,
   useGetProductsQuery,
   useLazyGetProductsQuery,
+  useGetSingleProductQuery,
 } = productApi;

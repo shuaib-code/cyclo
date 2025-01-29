@@ -1,33 +1,27 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import placeholder from "@/assets/placeholder.svg";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { TProduct } from "@/redux/features/product/types";
 import { Star } from "lucide-react";
+import { useNavigate } from "react-router";
 
 export function ProductCard({ product }: { product: TProduct }) {
-  const {
-    _id,
-    brand,
-    category,
-    createdAt,
-    description,
-    images,
-    model,
-    name,
-    price,
-    rating,
-    stock,
-    updatedAt,
-  } = product;
+  const navigate = useNavigate();
+  const { _id, description, images, name, price, rating, stock } = product;
+  const viewDetais = () => navigate(`/product/${_id}`);
 
   return (
     <Card className="flex flex-col h-full w-full transition ease-in-out duration-300 hover:drop-shadow-md">
       <div className="w-full max-h-72 rounded-lg overflow-hidden">
         <img
-          src={images[0] || "/placeholder.svg"}
+          src={images[0] || placeholder}
           alt={name}
           className="object-contain transition ease-in-out duration-300 hover:scale-110 hover:rotate-3"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = placeholder;
+          }}
         />
       </div>
       <CardContent className="flex-grow p-4 space-y-4">
@@ -51,7 +45,7 @@ export function ProductCard({ product }: { product: TProduct }) {
         </div>
       </CardContent>
       <CardFooter className="px-4 pb-4 grid grid-cols-5 gap-4">
-        <Button variant="outline" className="col-span-2">
+        <Button variant="outline" className="col-span-2" onClick={viewDetais}>
           View Details
         </Button>
         <Button className="col-span-3">Buy now</Button>

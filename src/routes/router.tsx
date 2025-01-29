@@ -4,6 +4,7 @@ import AllProducts from "@/pages/AllProducts";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import NotFound from "@/pages/NotFound";
+import ProductDetails from "@/pages/ProductDetails";
 import Register from "@/pages/Register";
 import ProviderWarpper from "@/provider/ProviderWarpper";
 import { Route, Routes } from "react-router";
@@ -24,6 +25,7 @@ export default function AppRoutes() {
         <Route path="/" element={<App />}>
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<AllProducts />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
           <Route index element={<Home />} />
         </Route>
         {RenderProtectedRoute()}
