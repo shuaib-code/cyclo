@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import placeholder from "@/assets/placeholder.svg";
 import { ProductTableError } from "@/components/error/product-error";
 import { ProductTableSkeleton } from "@/components/skeletion/product-table-skeleton";
 import { Badge } from "@/components/ui/badge";
@@ -57,8 +58,12 @@ export default function ProductTable() {
                   alt={product.name}
                   className="aspect-square rounded-md object-cover"
                   height="44"
-                  src={product.images[0] || "./src/assets/crank1.png"}
+                  src={product.images[0] || placeholder}
                   width="44"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = placeholder;
+                  }}
                 />
               </TableCell>
               <TableCell className="font-medium">{product.name}</TableCell>

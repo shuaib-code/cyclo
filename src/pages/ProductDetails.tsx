@@ -76,6 +76,12 @@ export default function ProductDetails() {
                     target.src = placeholder;
                   }}
                 />
+                <Badge
+                  variant="outline"
+                  className="absolute top-1 left-1 text-xs px-3 py-1"
+                >
+                  {category}
+                </Badge>
               </div>
               <div className="grid grid-cols-4 gap-2">
                 {[...Array(4)].map((_, i) => (
@@ -108,11 +114,7 @@ export default function ProductDetails() {
                     {brand} {model}
                   </p>
                 </div>
-                <Badge variant="secondary" className="text-lg px-3 py-1">
-                  {category}
-                </Badge>
               </div>
-
               {/* Rating */}
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -150,9 +152,10 @@ export default function ProductDetails() {
 
               {/* Tabs for Description and Features */}
               <Tabs defaultValue="description" className="w-full">
-                <TabsList className="grid w-full grid-cols-2">
+                <TabsList className="grid w-full grid-cols-3">
                   <TabsTrigger value="description">Description</TabsTrigger>
                   <TabsTrigger value="features">Features</TabsTrigger>
+                  <TabsTrigger value="details">Technical Details</TabsTrigger>
                 </TabsList>
                 <TabsContent value="description" className="mt-6">
                   <h2 className="text-xl font-semibold text-foreground mb-4">
@@ -173,6 +176,80 @@ export default function ProductDetails() {
                       </li>
                     ))}
                   </ul>
+                </TabsContent>
+                <TabsContent value="details" className="mt-6">
+                  <h2 className="text-2xl font-bold text-foreground mb-4">
+                    Technical Details
+                  </h2>
+                  <table className="w-full text-left">
+                    <tbody className="divide-y divide-border">
+                      {/* Brand */}
+                      <tr>
+                        <td className="px-4 py-3 text-muted-foreground font-medium">
+                          Brand
+                        </td>
+                        <td className="px-4 py-3 text-foreground">{brand}</td>
+                      </tr>
+                      {/* Model */}
+                      <tr>
+                        <td className="px-4 py-3 text-muted-foreground font-medium">
+                          Model
+                        </td>
+                        <td className="px-4 py-3 text-foreground">{model}</td>
+                      </tr>
+                      {/* Category */}
+                      <tr>
+                        <td className="px-4 py-3 text-muted-foreground font-medium">
+                          Category
+                        </td>
+                        <td className="px-4 py-3 text-foreground">
+                          <Badge variant="outline" className="text-sm">
+                            {category}
+                          </Badge>
+                        </td>
+                      </tr>
+                      {/* Price */}
+                      <tr>
+                        <td className="px-4 py-3 text-muted-foreground font-medium">
+                          Price
+                        </td>
+                        <td className="px-4 py-3 text-foreground font-semibold">
+                          {formatPrice(price)}
+                        </td>
+                      </tr>
+                      {/* Stock */}
+                      <tr>
+                        <td className="px-4 py-3 text-muted-foreground font-medium">
+                          Stock
+                        </td>
+                        <td className="px-4 py-3 text-foreground">
+                          <span
+                            className={`${
+                              stock > 0 ? "text-green-600" : "text-red-600"
+                            }`}
+                          >
+                            {stock > 0 ? `${stock} available` : "Out of stock"}
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-muted-foreground font-medium">
+                          Material
+                        </td>
+                        <td className="px-4 py-3 text-foreground">
+                          High-quality material
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-muted-foreground font-medium">
+                          Technology
+                        </td>
+                        <td className="px-4 py-3 text-foreground">
+                          Advanced AeroDynamic technology
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </TabsContent>
               </Tabs>
             </div>
