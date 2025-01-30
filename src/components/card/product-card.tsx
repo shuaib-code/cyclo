@@ -11,6 +11,7 @@ export function ProductCard({ product }: { product: TProduct }) {
   const navigate = useNavigate();
   const { _id, description, images, name, price, rating, stock } = product;
   const viewDetais = () => navigate(`/product/${_id}`);
+  const handleOrder = () => navigate(`/checkout/${_id}`);
 
   return (
     <Card className="flex flex-col h-full w-full transition ease-in-out duration-300 hover:drop-shadow-md">
@@ -51,7 +52,9 @@ export function ProductCard({ product }: { product: TProduct }) {
         <Button variant="outline" className="col-span-2" onClick={viewDetais}>
           View Details
         </Button>
-        <Button className="col-span-3">Buy now</Button>
+        <Button className="col-span-3" onClick={handleOrder}>
+          Buy now
+        </Button>
       </CardFooter>
     </Card>
   );

@@ -50,7 +50,7 @@ export default function ProductDetails() {
 
     return format(new Date(dateString), "MMMM dd, yyyy");
   };
-  const handleOrder = () => navigate(`/prodcut/${_id}`);
+  const handleOrder = () => navigate(`/checkout/${_id}`);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("en-US", {

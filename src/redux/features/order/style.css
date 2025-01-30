@@ -1,0 +1,28 @@
+.custom-card-element {
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    /* Light mode border color */
+    border-radius: 8px;
+    /* Border radius */
+    background-color: #ffffff;
+    /* Light mode background color */
+}
+
+.dark .custom-card-element {
+    border-color: #374151;
+    /* Dark mode border color */
+    background-color: #1f2937;
+    /* Dark mode background color */
+}
+
+.custom-card-element .StripeElement--focus {
+    border-color: transparent;
+    /* No border color on focus */
+    box-shadow: none;
+    /* No focus ring */
+}
+
+.custom-card-element .StripeElement--invalid {
+    border-color: #dc2626;
+    /* Red color for invalid state */
+}
