@@ -1,4 +1,5 @@
 import placeholder from "@/assets/placeholder.svg";
+import handleImageError from "@/components/error/ImageError";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -69,26 +70,22 @@ export default function ProductDetails() {
             <div className="space-y-6">
               <div className="relative overflow-hidden rounded-lg">
                 <img
+                  loading="lazy"
                   src={images[0] || placeholder}
                   alt={name}
                   className="transition-transform duration-300 hover:scale-105 object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = placeholder;
-                  }}
+                  onError={handleImageError}
                 />
               </div>
               <div className="grid grid-cols-4 gap-2">
                 {[...Array(4)].map((_, i) => (
                   <div key={i} className="relative overflow-hidden rounded-md">
                     <img
+                      loading="lazy"
                       src={images[i] || placeholder}
                       alt={`${name} thumbnail ${i + 1}`}
                       className="transition-transform duration-300 hover:scale-105 object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = placeholder;
-                      }}
+                      onError={handleImageError}
                     />
                   </div>
                 ))}
