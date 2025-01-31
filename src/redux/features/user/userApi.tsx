@@ -2,12 +2,12 @@ import { baseApi } from "@/redux/api/baseApi";
 
 const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    createProduct: builder.mutation({
-      query: (productDetails) => {
+    updatePassword: builder.mutation({
+      query: (body) => {
         return {
-          url: "/product",
-          method: "POST",
-          body: productDetails,
+          url: "/user",
+          method: "PATCH",
+          body: body,
         };
       },
     }),
@@ -34,5 +34,5 @@ const productApi = baseApi.injectEndpoints({
     }),
   }),
 });
-export const { useCreateProductMutation, useBlockMutation, useGetUserQuery } =
+export const { useUpdatePasswordMutation, useBlockMutation, useGetUserQuery } =
   productApi;
