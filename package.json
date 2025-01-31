@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
+    "@lottiefiles/react-lottie-player": "^3.6.0",
     "@radix-ui/react-alert-dialog": "^1.1.5",
     "@radix-ui/react-avatar": "^1.1.2",
     "@radix-ui/react-checkbox": "^1.1.3",
@@ -44,6 +45,7 @@
     "framer-motion": "^12.0.5",
     "http": "0.0.1-security",
     "jwt-decode": "^4.0.0",
+    "lottie-react": "^2.4.1",
     "lucide-react": "^0.469.0",
     "motion": "^12.0.5",
     "nanoid": "^5.0.9",

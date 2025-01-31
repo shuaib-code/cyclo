@@ -1,9 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
-
-import { AlertCircle, MinusIcon, PlusIcon } from "lucide-react";
-import { useState } from "react";
-
 import LoaderText from "@/components/base/loading-btn";
 import handleImageError from "@/components/error/ImageError";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -29,6 +24,8 @@ import { TProduct } from "@/redux/features/product/types";
 import { useAppSelector } from "@/redux/hook";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { AlertCircle, MinusIcon, PlusIcon } from "lucide-react";
+import { useState } from "react";
 import { useParams } from "react-router";
 import { toast } from "sonner";
 
@@ -39,6 +36,7 @@ export default function CheckoutPage() {
   const user = useAppSelector(useCurrentUser) as ITokenData;
   const [quantity, setQuantity] = useState(1);
   const [clientSecret, setClientSecret] = useState("");
+  const [orderId, setOrderID] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false); // Dialog state
   const { data, isLoading, error } = useGetSingleProductQuery(productId);
   const [createOrder, { isLoading: isLoadingPayment }] = usePaymentMutation();
@@ -61,6 +59,7 @@ export default function CheckoutPage() {
       const res = await createOrder(values).unwrap();
       if (!isLoadingPayment && res.success) {
         setClientSecret(res.data.clientSecret);
+        setOrderID(res.data.id);
         setIsDialogOpen(true); // Open the dialog
       }
     } catch (err: any) {
@@ -171,6 +170,7 @@ export default function CheckoutPage() {
       <Elements stripe={stripePromise}>
         {clientSecret && (
           <CheckOutButton
+            id={orderId}
             isOpen={isDialogOpen} // Pass dialog state
             onOpenChange={setIsDialogOpen} // Pass state setter
             clientSecret={clientSecret}

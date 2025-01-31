@@ -2,6 +2,7 @@ import App from "@/App";
 import About from "@/pages/About";
 import AllProducts from "@/pages/AllProducts";
 import CheckoutPage from "@/pages/Checkout";
+import PaymentSuccess, { PaymentError } from "@/pages/customer/success";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import NotFound from "@/pages/NotFound";
@@ -31,6 +32,22 @@ export default function AppRoutes() {
             element={
               <ProtectedRoute>
                 <CheckoutPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/success"
+            element={
+              <ProtectedRoute>
+                <PaymentSuccess />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/error"
+            element={
+              <ProtectedRoute>
+                <PaymentError />
               </ProtectedRoute>
             }
           />

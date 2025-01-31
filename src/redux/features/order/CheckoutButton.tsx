@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
-    AlertDialog,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogHeader,
-    AlertDialogTitle,
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,12 +13,15 @@ import { Label } from "@/components/ui/label";
 import { useAppSelector } from "@/redux/hook";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { useCurrentUser } from "../auth/authSlice";
 import { ITokenData } from "../auth/types";
+import { useStatusMutation } from "./orderApi";
 import "./style.css";
 
 interface CheckOutButtonProps {
   clientSecret: string;
+  id: string;
   isOpen: boolean; // Dialog open state
   onOpenChange: (open: boolean) => void; // Dialog state setter
 }
@@ -26,8 +29,11 @@ interface CheckOutButtonProps {
 const CheckOutButton = ({
   clientSecret,
   isOpen,
+  id,
   onOpenChange,
 }: CheckOutButtonProps) => {
+  const navigate = useNavigate();
+  const [status, { isLoading }] = useStatusMutation();
   const user = useAppSelector(useCurrentUser) as ITokenData;
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState("");
@@ -78,11 +84,19 @@ const CheckOutButton = ({
       }
 
       if (paymentIntent.status === "succeeded") {
+        const res = await status({ id, status: "paid" }).unwrap();
+        if (res.success && !isLoading) navigate("/success");
         // Handle success status
-        console.log(paymentIntent);
+        // console.log(paymentIntent);
         onOpenChange(false); // Close the dialog after successful payment
       }
     } catch (err) {
+      const res = await status({ id, status: "failed" }).unwrap();
+      if (res.success && !isLoading) {
+        navigate("/error");
+      } else {
+        navigate("/error");
+      }
       setError("An unexpected error occurred. Please try again.");
     } finally {
       setProcessing(false);

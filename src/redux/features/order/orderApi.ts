@@ -11,6 +11,34 @@ const productApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getOrders: builder.query({
+      query: ({ searchTerm, page, limit, sortBy, sortOrder, fields }) => {
+        // Construct the query parameters dynamically
+        let queryString = `?page=${page}&limit=${limit}&sortBy=${sortBy}&sortOrder=${sortOrder}`;
+
+        // Add the search term if provided
+        if (searchTerm) {
+          queryString += `&search=${searchTerm}`;
+        }
+
+        // Add the fields if provided
+        if (fields && fields.length > 0) {
+          queryString += `&fields=${fields.join(",")}`;
+        }
+
+        return `order${queryString}`;
+      },
+    }),
+    status: builder.mutation({
+      query: (body) => {
+        return {
+          url: `/order/${body.id}`,
+          method: "PATCH",
+          body: { status: body.status },
+        };
+      },
+    }),
+
     payment: builder.mutation({
       query: (body) => {
         return {
@@ -22,4 +50,9 @@ const productApi = baseApi.injectEndpoints({
     }),
   }),
 });
-export const { useCreateProductMutation, usePaymentMutation } = productApi;
+export const {
+  useCreateProductMutation,
+  usePaymentMutation,
+  useGetOrdersQuery,
+  useStatusMutation,
+} = productApi;

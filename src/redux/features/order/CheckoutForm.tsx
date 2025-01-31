@@ -14,8 +14,9 @@ import { useState } from "react";
 import { useCurrentUser } from "../auth/authSlice";
 import { ITokenData } from "../auth/types";
 
-const ChackOutButton = ({ clientSecret }: { clientSecret: string }) => {
+const ChackOutButton = ({ clientSecret }: { clientSecret: string}) => {
   const user = useAppSelector(useCurrentUser) as ITokenData;
+
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState("");
   const stripe = useStripe();
@@ -56,7 +57,7 @@ const ChackOutButton = ({ clientSecret }: { clientSecret: string }) => {
     } else {
       //   console.log("payment Intent", paymentIntent);
       if (paymentIntent.status === "succeeded") {
-        // hnadle success status
+          //
       }
 
       setProcessing(false);
