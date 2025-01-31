@@ -1,3 +1,5 @@
+import UnderDevelopment from "@/components/card/under-development";
+
 export default function EditProduct() {
-  return <div>EditProduct</div>;
+  return <UnderDevelopment />;
 }

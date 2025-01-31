@@ -10,12 +10,10 @@ import {
   BarChart,
   Bike,
   ClipboardList,
-  Eye,
   LineChart,
   ListOrdered,
   Package,
   PlusCircle,
-  Settings,
   UserCog,
   Users,
 } from "lucide-react";
@@ -71,11 +69,11 @@ export const AdminNavigation = [
         url: "/dashboard/orders",
         icon: ClipboardList,
       },
-      {
-        title: "View Order Details",
-        url: "/dashboard/orders/:id",
-        icon: Eye,
-      },
+      // {
+      //   title: "View Order Details",
+      //   url: "/dashboard/orders/:id",
+      //   icon: Eye,
+      // },
     ],
   },
   {
@@ -88,11 +86,11 @@ export const AdminNavigation = [
         url: "/dashboard/sales",
         icon: LineChart,
       },
-      {
-        title: "Settings",
-        url: "/dashboard/admin-profile",
-        icon: Settings,
-      },
+      // {
+      //   title: "Settings",
+      //   url: "/dashboard/admin-profile",
+      //   icon: Settings,
+      // },
     ],
   },
 ];

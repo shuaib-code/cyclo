@@ -1,3 +1,5 @@
+import UnderDevelopment from "@/components/card/under-development";
+
 export default function Analytics() {
-  return <div>Analytics</div>;
+  return <UnderDevelopment />;
 }

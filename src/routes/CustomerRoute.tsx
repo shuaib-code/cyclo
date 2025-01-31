@@ -2,7 +2,7 @@ import ChangePassword from "@/pages/ChangePassword";
 import Orders from "@/pages/customer/Orders";
 import Wishlist from "@/pages/customer/Wishlist";
 import ProfileSettings from "@/pages/ProfileSetting";
-import { Heart, Key, Package, User } from "lucide-react";
+import { Heart, Package, User } from "lucide-react";
 
 export const CustomerRoutes = [
   { path: "manage-orders", element: <Orders /> },
@@ -22,11 +22,11 @@ export const CustomerNavigation = [
     url: "/dashboard/user-profile",
     icon: User,
   },
-  {
-    name: "Change Password",
-    url: "/dashboard/change-user-password",
-    icon: Key,
-  },
+  // {
+  //   name: "Change Password",
+  //   url: "/dashboard/change-user-password",
+  //   icon: Key,
+  // },
   {
     name: "Wishlist",
     url: "/dashboard/wishlist",

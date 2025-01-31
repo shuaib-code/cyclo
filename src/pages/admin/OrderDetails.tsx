@@ -1,3 +1,5 @@
+import UnderDevelopment from "@/components/card/under-development";
+
 export default function OrderDetails() {
-  return <div>OrderDetails</div>;
+  return <UnderDevelopment />;
 }

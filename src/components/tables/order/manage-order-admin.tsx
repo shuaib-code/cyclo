@@ -58,7 +58,7 @@ export default function OrderTableAdmin() {
     const action = toast.loading(`Confirming...`);
     try {
       const res = await status({ id, status: "paid" }).unwrap();
-      console.log(res);
+
       if (!isLoadingStatus && res.success) {
         toast.success("Order confirmed successfully!");
       }
