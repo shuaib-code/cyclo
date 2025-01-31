@@ -28,6 +28,11 @@ The **Bicycle Store Application** is a full-stack web platform that allows users
 - Role-based access control (Customer & Admin)
 - JWT-based authentication and session management
 
+### 🪪 Credentials
+
+- **Email**: admin@gmail.com
+- **password**: 111111
+
 ### 🏠 Public Routes
 
 - **Home Page**: Featured bicycles, promotions, and customer testimonials
@@ -43,7 +48,7 @@ The **Bicycle Store Application** is a full-stack web platform that allows users
 
 ### 💳 Payment Integration
 
-Supports **SurjoPay, SSLCommerz, AmaarPay, or Stripe** for secure transactions.
+Supports **Stripe** for secure transactions.
 
 ## 🛠️ Tech Stack
 
@@ -53,7 +58,7 @@ Supports **SurjoPay, SSLCommerz, AmaarPay, or Stripe** for secure transactions.
 
 ### **Backend**
 
-- Node.js, Express.js, MongoDB (Mongoose, Zod for validation)
+- Node.js, Express.js, MongoDB (Mongoose, Zod for validation) -[!Server Side Repo](https://github.com/shuaib-code/cyclo-server)
 
 ### **Authentication & Security**
 
@@ -65,11 +70,11 @@ Supports **SurjoPay, SSLCommerz, AmaarPay, or Stripe** for secure transactions.
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-repo/bicycle-store.git
+   git clone https://github.com/shuaib-code/cyclo-client.git
    ```
 2. Navigate to the project folder:
    ```sh
-   cd bicycle-store
+   cd cyclo-client
    ```
 3. Install dependencies:
    ```sh
@@ -81,9 +86,12 @@ Supports **SurjoPay, SSLCommerz, AmaarPay, or Stripe** for secure transactions.
 Create a `.env` file in the root directory and add the following:
 
 ```
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-PAYMENT_GATEWAY_KEY=your_payment_api_key
+# Server url
+# VITE_API_URL=https://api.example.com
+#VITE_CLOUDINARY_UPLOAD_PRESET=your_preset
+#VITE_CLOUDINARY_CLOUD_NAME=your_cloud_name
+#VITE_CLOUDINARY_URL=https://api.cloudinary.com/v1_1/your_cloud_name/image/upload
+#VITE_SP= Stripe pusblisable key
 ```
 
 ### 🚀 Run the Application
